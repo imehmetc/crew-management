@@ -1,1 +1,8 @@
-<p>language-selector works!</p>
+<mat-form-field appearance="fill" class="language-selector">
+  <mat-label>{{ 'CREW.LANGUAGE_SELECT' | translate }}</mat-label>
+  <mat-select #languageSelect (change)="useLanguage(languageSelect.value)" class="language-select">
+    <mat-option *ngFor="let lang of languages" [value]="lang" class="language-option">
+      {{ lang.toUpperCase() }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

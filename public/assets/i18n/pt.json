@@ -1,0 +1,20 @@
+{
+  "CREW": {
+    "FIRST_NAME": "Primeiro Nome",
+    "LAST_NAME": "Último Nome",
+    "NATIONALITY": "Nacionalidade",
+    "TITLE": "Título",
+    "DAYS_ON_BOARD": "Dias a bordo",
+    "DAILY_RATE": "Taxa diária",
+    "CURRENCY": "Moeda",
+    "TOTAL_INCOME": "Renda total",
+    "CERTIFICATES": "Certificados",
+    "LANGUAGE_SELECT": "Selecionar idioma"
+  },
+  "BUTTONS": {
+    "ADD": "Adicionar",
+    "EDIT": "Editar",
+    "DELETE": "Excluir",
+    "DETAIL": "Detalhes"
+  }
+}

@@ -1,0 +1,38 @@
+// app.component.scss
+
+mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  
+    span {
+      font-weight: bold;
+      font-size: 24px;
+    }
+  }
+  
+  .spacer {
+    flex-grow: 1;
+  }
+  
+  .main-content {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .crew-list-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  app-language-selector {
+    display: inline-block;
+    margin-left: 10px;
+  }
+  

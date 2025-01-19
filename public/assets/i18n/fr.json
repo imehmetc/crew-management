@@ -1,0 +1,20 @@
+{
+  "CREW": {
+    "FIRST_NAME": "Prénom",
+    "LAST_NAME": "Nom de famille",
+    "NATIONALITY": "Nationalité",
+    "TITLE": "Titre",
+    "DAYS_ON_BOARD": "Jours à bord",
+    "DAILY_RATE": "Tarif journalier",
+    "CURRENCY": "Monnaie",
+    "TOTAL_INCOME": "Revenu total",
+    "CERTIFICATES": "Certificats",
+    "LANGUAGE_SELECT": "Sélectionner la langue"
+  },
+  "BUTTONS": {
+    "ADD": "Ajouter",
+    "EDIT": "Modifier",
+    "DELETE": "Supprimer",
+    "DETAIL": "Détail"
+  }
+}
