@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "firstName": "John",
     "lastName": "Doe",
     "nationality": "USA",
@@ -11,7 +11,7 @@
     "totalIncome": 10000
   },
   {
-    "id": 2,
+    "id": "2",
     "firstName": "Jane",
     "lastName": "Smith",
     "nationality": "UK",
@@ -22,7 +22,7 @@
     "totalIncome": 4500
   },
   {
-    "id": 3,
+    "id": "3",
     "firstName": "Michael",
     "lastName": "Johnson",
     "nationality": "Canada",
@@ -33,7 +33,7 @@
     "totalIncome": 8100
   },
   {
-    "id": 4,
+    "id": "4",
     "firstName": "Emily",
     "lastName": "Davis",
     "nationality": "Australia",
@@ -44,7 +44,7 @@
     "totalIncome": 3000
   },
   {
-    "id": 5,
+    "id": "5",
     "firstName": "David",
     "lastName": "Miller",
     "nationality": "USA",
@@ -55,7 +55,7 @@
     "totalIncome": 6400
   },
   {
-    "id": 6,
+    "id": "6",
     "firstName": "Sophia",
     "lastName": "Garcia",
     "nationality": "Mexico",
@@ -66,7 +66,7 @@
     "totalIncome": 4550
   },
   {
-    "id": 7,
+    "id": "7",
     "firstName": "James",
     "lastName": "Wilson",
     "nationality": "Canada",
@@ -77,7 +77,7 @@
     "totalIncome": 11400
   },
   {
-    "id": 8,
+    "id": "8",
     "firstName": "Olivia",
     "lastName": "Martinez",
     "nationality": "Spain",
@@ -88,7 +88,7 @@
     "totalIncome": 1500
   },
   {
-    "id": 9,
+    "id": "9",
     "firstName": "Benjamin",
     "lastName": "Anderson",
     "nationality": "UK",
@@ -99,7 +99,7 @@
     "totalIncome": 11000
   },
   {
-    "id": 10,
+    "id": "10",
     "firstName": "Charlotte",
     "lastName": "Taylor",
     "nationality": "Australia",

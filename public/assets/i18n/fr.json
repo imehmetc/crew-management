@@ -11,7 +11,13 @@
     "CERTIFICATES": "Certificats",
     "LANGUAGE_SELECT": "Sélectionner la langue",
     "CREW_LIST": "Liste D'équipage",
-    "ACTIONS": "Actes"
+    "ACTIONS": "Actes",
+    "CARD": "Carte"
+  },
+  "CERTIFICATE": {
+    "CERTIFICATE_TYPE": "Type De Certificat",
+    "ISSUE_DATE": "Date D'émission",
+    "EXPIRY_DATE": "Date D'expiration"
   },
   "BUTTONS": {
     "ADD": "Ajouter",

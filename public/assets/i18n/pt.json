@@ -11,7 +11,13 @@
     "CERTIFICATES": "Certificados",
     "LANGUAGE_SELECT": "Selecionar idioma",
     "CREW_LIST": "Lista De Tripulação",
-    "ACTIONS": "Ações"
+    "ACTIONS": "Ações",
+    "CARD": "Cartão"
+  },
+  "CERTIFICATE": {
+    "CERTIFICATE_TYPE": "Tipo De Certificado",
+    "ISSUE_DATE": "Data De Emissão",
+    "EXPIRY_DATE": "Data De Validade"
   },
   "BUTTONS": {
     "ADD": "Adicionar",

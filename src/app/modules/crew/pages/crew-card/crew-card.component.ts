@@ -12,6 +12,7 @@ import {
   Certificate,
   CertificateType,
 } from '../../services/crew.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-crew-card',
@@ -23,6 +24,7 @@ import {
     RouterModule,
     MatTableModule,
     MatTabsModule,
+    TranslateModule,
   ],
   templateUrl: './crew-card.component.html',
   styleUrl: './crew-card.component.scss',
@@ -32,6 +34,7 @@ export class CrewCardComponent {
   crew: Crew | null = null;
   certificates: Certificate[] = [];
   certificateTypes: CertificateType[] = [];
+  certificatesWithType: { certificate: Certificate; type: string }[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -49,15 +52,42 @@ export class CrewCardComponent {
   getCrewDetails(id: string) {
     this.crewService.getCrewById(id).subscribe(
       (crew) => {
-        this.crew = crew; // null veya Crew objesi olabilir
+        this.crew = crew;
         console.log('Crew Details:', this.crew);
         if (this.crew) {
           this.crewService.getCertificates().subscribe(
             (certificates) => {
+              // Certificates
               this.certificates = certificates.filter(
-                (certificate) => certificate.crewId === parseInt(id)
+                (certificate) => certificate.crewId === id
               );
               console.log('Certificates:', this.certificates);
+
+              // Certificate Types
+              this.crewService.getCertificateTypes().subscribe(
+                (types) => {
+                  this.certificatesWithType = this.certificates.map(
+                    (certificate) => {
+                      const certificateType = types.find(
+                        (type) => type.id === certificate.certificateTypeId
+                      );
+                      return {
+                        certificate,
+                        type: certificateType
+                          ? certificateType.type
+                          : 'Unknown',
+                      };
+                    }
+                  );
+                  console.log(
+                    'Certificates with types:',
+                    this.certificatesWithType
+                  );
+                },
+                (error) => {
+                  console.error('Error fetching certificate types:', error);
+                }
+              );
             },
             (error) => {
               console.error('Error fetching certificates:', error);

@@ -11,7 +11,13 @@
     "CERTIFICATES": "Certificates",
     "LANGUAGE_SELECT": "Select Language",
     "CREW_LIST": "Crew List",
-    "ACTIONS": "Actions"
+    "ACTIONS": "Actions",
+    "CARD": "Card"
+  },
+  "CERTIFICATE": {
+    "CERTIFICATE_TYPE": "Certificate Type",
+    "ISSUE_DATE": "Issue Date",
+    "EXPIRY_DATE": "Expiry Date"
   },
   "BUTTONS": {
     "ADD": "Add",

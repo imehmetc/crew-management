@@ -15,15 +15,15 @@ export interface Crew {
 }
 
 export interface Certificate {
-  id: number;
-  crewId: number;
-  certificateTypeId: number;
+  id: string;
+  crewId: string;
+  certificateTypeId: string;
   issueDate: string;
   expiryDate: string;
 }
 
 export interface CertificateType {
-  id: number;
+  id: string;
   type: string;
 }
 
