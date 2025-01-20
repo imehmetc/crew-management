@@ -1,1 +1,55 @@
-<p>crew-card works!</p>
+<div class="crew-card-container" style="padding: 20px;">
+  <mat-tab-group>
+
+    <!-- Crew Card Tab -->
+    <mat-tab label="Card">
+      <div class="crew-card">
+        <mat-card>
+          <mat-card-title>{{ crew?.firstName }} {{ crew?.lastName }}</mat-card-title>
+          <mat-card-content>
+            <p><strong>Nationality:</strong> {{ crew?.nationality }}</p>
+            <p><strong>Title:</strong> {{ crew?.title }}</p>
+            <p><strong>Days On Board:</strong> {{ crew?.daysOnBoard }}</p>
+            <p><strong>Daily Rate:</strong> {{ crew?.dailyRate }} {{ crew?.currency }}</p>
+            <p><strong>Total Income:</strong> {{ crew?.totalIncome }} {{ crew?.currency }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-tab>
+
+    <!-- Certificates Tab -->
+    <mat-tab label="Certificates">
+      <div class="certificates-tab">
+        <table mat-table [dataSource]="certificates" class="mat-elevation-z8" style="width: 100%;">
+          <!-- Certificate Type Column -->
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef> Certificate Type </th>
+            <td mat-cell *matCellDef="let certificate"> 
+              {{ certificate.type }} 
+            </td>
+          </ng-container>
+
+          <!-- Issue Date Column -->
+          <ng-container matColumnDef="issueDate">
+            <th mat-header-cell *matHeaderCellDef> Issue Date </th>
+            <td mat-cell *matCellDef="let certificate"> 
+              {{ certificate.issueDate | date }} 
+            </td>
+          </ng-container>
+
+          <!-- Expiry Date Column -->
+          <ng-container matColumnDef="expiryDate">
+            <th mat-header-cell *matHeaderCellDef> Expiry Date </th>
+            <td mat-cell *matCellDef="let certificate"> 
+              {{ certificate.expiryDate | date }} 
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="['type', 'issueDate', 'expiryDate']"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['type', 'issueDate', 'expiryDate'];"></tr>
+        </table>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>

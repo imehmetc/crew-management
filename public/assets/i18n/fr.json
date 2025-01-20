@@ -9,7 +9,9 @@
     "CURRENCY": "Monnaie",
     "TOTAL_INCOME": "Revenu total",
     "CERTIFICATES": "Certificats",
-    "LANGUAGE_SELECT": "Sélectionner la langue"
+    "LANGUAGE_SELECT": "Sélectionner la langue",
+    "CREW_LIST": "Liste D'équipage",
+    "ACTIONS": "Actes"
   },
   "BUTTONS": {
     "ADD": "Ajouter",

@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class LanguageSelectorComponent {
   languages = ['en', 'fr', 'pt'];
+  selectedLanguage = 'en';
 
   useLanguage(language: string): void {
     this.translate.use(language);

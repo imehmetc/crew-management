@@ -9,7 +9,9 @@
     "CURRENCY": "Currency",
     "TOTAL_INCOME": "Total Income",
     "CERTIFICATES": "Certificates",
-    "LANGUAGE_SELECT": "Select Language"
+    "LANGUAGE_SELECT": "Select Language",
+    "CREW_LIST": "Crew List",
+    "ACTIONS": "Actions"
   },
   "BUTTONS": {
     "ADD": "Add",
