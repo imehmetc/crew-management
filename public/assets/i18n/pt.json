@@ -12,17 +12,22 @@
     "LANGUAGE_SELECT": "Selecionar idioma",
     "CREW_LIST": "Lista De Tripulação",
     "ACTIONS": "Ações",
-    "CARD": "Cartão"
+    "CARD": "Cartão",
+    "TOTAL_INCOME_BY_CURRENCY": "Receita Total Por Moeda"
   },
   "CERTIFICATE": {
     "CERTIFICATE_TYPE": "Tipo De Certificado",
     "ISSUE_DATE": "Data De Emissão",
-    "EXPIRY_DATE": "Data De Validade"
+    "EXPIRY_DATE": "Data De Validade",
+    "CERTIFICATE_DETAILS": "Detalhes Do Certificado",
+    "NO_CERTIFICATES": "Sem Certificados"
   },
   "BUTTONS": {
     "ADD": "Adicionar",
     "EDIT": "Editar",
     "DELETE": "Excluir",
-    "DETAIL": "Detalhes"
+    "DETAIL": "Detalhes",
+    "VIEW": "Visualizar",
+    "CLOSE": "Fechar"
   }
 }

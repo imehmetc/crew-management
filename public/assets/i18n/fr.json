@@ -12,17 +12,22 @@
     "LANGUAGE_SELECT": "Sélectionner la langue",
     "CREW_LIST": "Liste D'équipage",
     "ACTIONS": "Actes",
-    "CARD": "Carte"
+    "CARD": "Carte",
+    "TOTAL_INCOME_BY_CURRENCY": "Revenu Total Par Devise"
   },
   "CERTIFICATE": {
     "CERTIFICATE_TYPE": "Type De Certificat",
     "ISSUE_DATE": "Date D'émission",
-    "EXPIRY_DATE": "Date D'expiration"
+    "EXPIRY_DATE": "Date D'expiration",
+    "CERTIFICATE_DETAILS": "Détails Du Certificat",
+    "NO_CERTIFICATES": "Pas De Certificats"
   },
   "BUTTONS": {
     "ADD": "Ajouter",
     "EDIT": "Modifier",
     "DELETE": "Supprimer",
-    "DETAIL": "Détail"
+    "DETAIL": "Détail",
+    "VIEW": "Voir",
+    "CLOSE": "Fermer"
   }
 }

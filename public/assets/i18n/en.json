@@ -12,17 +12,22 @@
     "LANGUAGE_SELECT": "Select Language",
     "CREW_LIST": "Crew List",
     "ACTIONS": "Actions",
-    "CARD": "Card"
+    "CARD": "Card",
+    "TOTAL_INCOME_BY_CURRENCY": "Total Income By Currency"
   },
   "CERTIFICATE": {
     "CERTIFICATE_TYPE": "Certificate Type",
     "ISSUE_DATE": "Issue Date",
-    "EXPIRY_DATE": "Expiry Date"
+    "EXPIRY_DATE": "Expiry Date",
+    "CERTIFICATE_DETAILS": "Certificate Details",
+    "NO_CERTIFICATES": "No Certificates"
   },
   "BUTTONS": {
     "ADD": "Add",
     "EDIT": "Edit",
     "DELETE": "Delete",
-    "DETAIL": "Detail"
+    "DETAIL": "Detail",
+    "VIEW": "View",
+    "CLOSE": "Close"
   }
 }

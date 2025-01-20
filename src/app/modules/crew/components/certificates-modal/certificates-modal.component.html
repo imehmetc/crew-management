@@ -1,0 +1,21 @@
+<h3 class="dialog-title">{{ 'CERTIFICATE.CERTIFICATE_DETAILS' | translate }}</h3>
+
+<mat-list *ngIf="certificatesWithType.length > 0" class="certificate-list">
+  <mat-list-item *ngFor="let cert of certificatesWithType" class="certificate-item">
+    <div class="certificate-details">
+      <strong>{{ cert.type }}:</strong> 
+      {{ cert.certificate.issueDate | date }} - {{ cert.certificate.expiryDate | date }}
+    </div>
+    <div class="certificate-description">
+      <em>{{ cert.type }}</em>
+    </div>
+  </mat-list-item>
+</mat-list>
+
+<p *ngIf="certificatesWithType.length === 0" class="no-certificates">{{ 'CERTIFICATE.NO_CERTIFICATES' | translate }}</p>
+
+<mat-dialog-actions class="dialog-actions">
+  <button mat-icon-button (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-dialog-actions>

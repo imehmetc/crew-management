@@ -1,0 +1,23 @@
+.total-income-by-currency {
+    margin-top: 20px;
+    padding: 10px;
+  }
+  
+  .total-income-card {
+    margin: 20px 0;
+  }
+  
+  mat-card-header {
+    background-color: #f5f5f5;
+    padding: 10px;
+  }
+  
+  mat-list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  
+  mat-card-title{
+    text-align: center;
+  }
