@@ -46,6 +46,7 @@ export interface Crew {
 })
 export class CrewListComponent {
   displayedColumns: string[] = [
+    'rowNumber',
     'firstName',
     'lastName',
     'nationality',

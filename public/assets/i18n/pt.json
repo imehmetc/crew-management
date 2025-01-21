@@ -13,7 +13,8 @@
     "CREW_LIST": "Lista De Tripulação",
     "ACTIONS": "Ações",
     "CARD": "Cartão",
-    "TOTAL_INCOME_BY_CURRENCY": "Receita Total Por Moeda"
+    "TOTAL_INCOME_BY_CURRENCY": "Receita Total Por Moeda",
+    "ADD_CREW": "Adicionar tripulação"
   },
   "CERTIFICATE": {
     "CERTIFICATE_TYPE": "Tipo De Certificado",
@@ -28,6 +29,7 @@
     "DELETE": "Excluir",
     "DETAIL": "Detalhes",
     "VIEW": "Visualizar",
-    "CLOSE": "Fechar"
+    "CLOSE": "Fechar",
+    "SAVE": "Salvar"
   }
 }

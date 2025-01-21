@@ -13,7 +13,8 @@
     "CREW_LIST": "Liste D'équipage",
     "ACTIONS": "Actes",
     "CARD": "Carte",
-    "TOTAL_INCOME_BY_CURRENCY": "Revenu Total Par Devise"
+    "TOTAL_INCOME_BY_CURRENCY": "Revenu Total Par Devise",
+    "ADD_CREW": "Ajouter un équipage"
   },
   "CERTIFICATE": {
     "CERTIFICATE_TYPE": "Type De Certificat",
@@ -28,6 +29,7 @@
     "DELETE": "Supprimer",
     "DETAIL": "Détail",
     "VIEW": "Voir",
-    "CLOSE": "Fermer"
+    "CLOSE": "Fermer",
+    "SAVE": "Sauvegarder"
   }
 }

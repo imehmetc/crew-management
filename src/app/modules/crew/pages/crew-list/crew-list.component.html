@@ -1,6 +1,12 @@
 <div class="crew-container">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   
+      <!-- Row Number Column -->
+      <ng-container matColumnDef="rowNumber">
+        <th mat-header-cell *matHeaderCellDef> {{ 'CREW.ROW_NUMBER' | translate }} </th>
+        <td mat-cell *matCellDef="let crew; let i = index"> <strong> {{ i + 1 }}</strong> </td>
+      </ng-container>
+
       <!-- First Name Column -->
       <ng-container matColumnDef="firstName">
         <th mat-header-cell *matHeaderCellDef> {{ 'CREW.FIRST_NAME' | translate }} </th>

@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import axios from 'axios';
 
 export interface Crew {
   id: string;
@@ -32,12 +33,12 @@ export interface CertificateType {
 })
 export class CrewService {
   private crewUrl = 'assets/data/crews.json';
-  private certificateUrl = '/assets/data/certificates.json';
-  private certificateTypeUrl = '/assets/data/certificateType.json';
+  private certificateUrl = 'assets/data/certificates.json';
+  private certificateTypeUrl = 'assets/data/certificateType.json';
 
   constructor(private http: HttpClient) {}
 
-  getCrewList() {
+  getCrewList(): Observable<Crew[]> {
     return this.http.get<Crew[]>(this.crewUrl);
   }
 
@@ -53,5 +54,24 @@ export class CrewService {
 
   getCertificateTypes(): Observable<CertificateType[]> {
     return this.http.get<CertificateType[]>(this.certificateTypeUrl);
+  }
+
+  async saveCrew(crew: Crew) {
+    const url = 'http://localhost:4200/assets/data/crews.json';
+
+    return await axios
+      .post(url, JSON.stringify(crew))
+      .then((response) => {
+        console.log('Data saved successfully:', response);
+        return response.data;
+      })
+      .catch((error) => {
+        console.error('Error saving data:', error);
+        throw error;
+      });
+  }
+
+  saveCertificate(certificate: Certificate): Observable<Certificate> {
+    return this.http.post<Certificate>(this.certificateUrl, certificate);
   }
 }

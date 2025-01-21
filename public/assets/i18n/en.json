@@ -13,7 +13,9 @@
     "CREW_LIST": "Crew List",
     "ACTIONS": "Actions",
     "CARD": "Card",
-    "TOTAL_INCOME_BY_CURRENCY": "Total Income By Currency"
+    "TOTAL_INCOME_BY_CURRENCY": "Total Income By Currency",
+    "ADD_CREW": "Add Crew",
+    "ROW_NUMBER": "Row Number"
   },
   "CERTIFICATE": {
     "CERTIFICATE_TYPE": "Certificate Type",
@@ -28,6 +30,7 @@
     "DELETE": "Delete",
     "DETAIL": "Detail",
     "VIEW": "View",
-    "CLOSE": "Close"
+    "CLOSE": "Close",
+    "SAVE": "Save"
   }
 }

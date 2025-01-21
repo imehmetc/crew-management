@@ -4,9 +4,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CrewListComponent } from './modules/crew/pages/crew-list/crew-list.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { CrewRoutingModule } from './modules/crew/crew-routing.module';
-import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { CrewAddDialogComponent } from './modules/crew/components/crew-add-modal/crew-add-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -23,4 +24,12 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor(private dialog: MatDialog) {}
+
+  openCrewAddDialog() {
+    const dialogRef = this.dialog.open(CrewAddDialogComponent, {
+      width: '10000px',
+    });
+  }
+}

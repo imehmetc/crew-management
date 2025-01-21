@@ -1,12 +1,18 @@
 <mat-toolbar color="primary" class="toolbar-container">
-    <span class="crew-list-title">{{'CREW.CREW_LIST' | translate}} </span>
-    <span class="spacer"></span>
-    <app-language-selector></app-language-selector>
-  </mat-toolbar>
-  
-  <div class="main-content">
-    <div class="crew-list-container">
-      <app-crew-list></app-crew-list>
-    </div>
+  <span class="crew-list-title">{{'CREW.CREW_LIST' | translate}} </span>
+  <span class="spacer"></span>
+  <app-language-selector></app-language-selector>
+</mat-toolbar>
+
+<div class="main-content">
+  <div class="crew-list-container">
+    <button 
+      mat-raised-button 
+      color="primary" 
+      (click)="openCrewAddDialog()" 
+      class="crew-add-button">
+      + {{ "CREW.ADD_CREW" | translate }}
+    </button>
+    <app-crew-list></app-crew-list>
   </div>
-  
+</div>
