@@ -1,3 +1,8 @@
+
+<button mat-button (click)="openCrewAddDialog()" class="crew-add-button">
+  +{{ 'CREW.ADD_CREW' | translate }}
+</button>
+
 <div class="crew-container">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   
@@ -73,10 +78,11 @@
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="viewDetails(crew)">
+            <a mat-menu-item [routerLink]="'crew-card/' + crew.id">
               <mat-icon>visibility</mat-icon>
-              <span> {{"BUTTONS.DETAIL" | translate }} </span>
-            </button>
+              <span>{{ 'BUTTONS.DETAIL' | translate }}</span>
+            </a>
+                        
             <button mat-menu-item (click)="editCrew(crew)">
               <mat-icon>edit</mat-icon>
               <span> {{"BUTTONS.EDIT" | translate }} </span>
@@ -110,9 +116,4 @@
           </mat-list>
         </mat-card>
       </div>
-  </div>
-
-
-  <div *ngIf="showDetails">
-    <router-outlet></router-outlet>
   </div>

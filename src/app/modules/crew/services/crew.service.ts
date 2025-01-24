@@ -56,14 +56,14 @@ export class CrewService {
     return this.http.get<CertificateType[]>(this.certificateTypeUrl);
   }
 
-  async saveCrew(crew: Crew) {
+  async saveCrew(crew: Crew): Promise<Crew> {
     const url = 'http://localhost:4200/assets/data/crews.json';
 
     return await axios
       .post(url, JSON.stringify(crew))
       .then((response) => {
         console.log('Data saved successfully:', response);
-        return response.data;
+        return response.data as Crew;
       })
       .catch((error) => {
         console.error('Error saving data:', error);

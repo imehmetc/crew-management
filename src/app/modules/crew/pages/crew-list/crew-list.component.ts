@@ -6,25 +6,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { CommonModule } from '@angular/common';
-import { CrewService } from '../../services/crew.service';
+import { Crew, CrewService } from '../../services/crew.service';
 import { Router, RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialog } from '@angular/material/dialog';
 import { CertificatesModalComponent } from '../../components/certificates-modal/certificates-modal.component';
-
-export interface Crew {
-  id: string;
-  firstName: string;
-  lastName: string;
-  nationality: string;
-  title: string;
-  daysOnBoard: number;
-  dailyRate: number;
-  currency: string;
-  totalIncome: number;
-}
+import { CrewAddDialogComponent } from '../../components/crew-add-modal/crew-add-modal.component';
 
 @Component({
   selector: 'app-crew-list',
@@ -73,6 +62,7 @@ export class CrewListComponent {
     this.crewService.getCrewList().subscribe((crews) => {
       this.dataSource = crews;
       this.calculateTotalIncomeByCurrency();
+      console.log(this.crewService.getCrewList());
     });
   }
   calculateTotalIncomeByCurrency() {
@@ -119,6 +109,13 @@ export class CrewListComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('Dialog was closed');
+    });
+  }
+
+  openCrewAddDialog() {
+    this.dialog.open(CrewAddDialogComponent, {
+      width: '500px',
+      data: {},
     });
   }
 }

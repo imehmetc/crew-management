@@ -34,16 +34,7 @@ import { CertificateType, CrewService } from '../../services/crew.service';
 })
 export class CrewAddDialogComponent {
   crewForm: FormGroup;
-  certificateForm: FormGroup;
   titles = ['Captain', 'Engineer', 'Cooker', 'Mechanicer'];
-  certificateTypes: CertificateType[] = [];
-  certificates: {
-    type: string;
-    issueDate: string;
-    expiryDate: string;
-    certificateTypeId: string;
-  }[] = [];
-  isCertificateFormVisible = false;
 
   constructor(
     private fb: FormBuilder,
@@ -59,51 +50,12 @@ export class CrewAddDialogComponent {
       nationality: ['', Validators.required],
       daysOnBoard: [null, [Validators.required, Validators.min(0)]],
     });
-
-    this.certificateForm = this.fb.group({
-      type: ['', Validators.required],
-      issueDate: ['', Validators.required],
-      expiryDate: ['', Validators.required],
-    });
-  }
-
-  ngOnInit() {
-    // Sertifika türlerini getirmek için service'i çağırıyoruz
-    this.crewService.getCertificateTypes().subscribe((types) => {
-      this.certificateTypes = types;
-    });
-  }
-
-  addCertificate() {
-    this.isCertificateFormVisible = true;
-    this.certificateForm.reset();
-  }
-
-  // Sertifikayı kaydetme işlemi
-  saveCertificate() {
-    console.log(this.certificateForm.valid);
-    if (this.certificateForm.valid) {
-      const certificateData = {
-        id: (this.certificates.length + 1).toString(),
-        crewId: this.crewForm.value.id,
-        type: this.certificateForm.value.type,
-        certificateTypeId: this.certificateForm.value.type,
-        issueDate: this.certificateForm.value.issueDate,
-        expiryDate: this.certificateForm.value.expiryDate,
-      };
-
-      console.log(certificateData);
-
-      this.certificates.push(certificateData);
-      this.certificateForm.reset();
-      this.isCertificateFormVisible = false;
-    }
   }
 
   async saveCrew() {
     if (this.crewForm.valid) {
       const crewData = {
-        id: (this.certificates.length + 1).toString(),
+        id: (333).toString(),
         ...this.crewForm.value,
         totalIncome:
           this.crewForm.value.dailyRate * this.crewForm.value.daysOnBoard,
@@ -113,7 +65,7 @@ export class CrewAddDialogComponent {
         const response = await this.crewService.saveCrew(crewData);
 
         console.log('Crew saved:', response);
-        this.close(); // Başarıyla kaydedildikten sonra dialogu kapatabilirsiniz
+        this.close();
       } catch (error) {
         console.error('Error saving crew:', error);
       }

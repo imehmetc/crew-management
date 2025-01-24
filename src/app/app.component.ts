@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 import { LanguageSelectorComponent } from './shared/components/language-selector/language-selector.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { CrewListComponent } from './modules/crew/pages/crew-list/crew-list.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { CrewRoutingModule } from './modules/crew/crew-routing.module';
-import { MatDialog } from '@angular/material/dialog';
-import { CrewAddDialogComponent } from './modules/crew/components/crew-add-modal/crew-add-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +13,6 @@ import { CrewAddDialogComponent } from './modules/crew/components/crew-add-modal
   imports: [
     LanguageSelectorComponent,
     TranslateModule,
-    CrewListComponent,
     MatToolbarModule,
     MatButtonModule,
     RouterModule,
@@ -25,11 +22,9 @@ import { CrewAddDialogComponent } from './modules/crew/components/crew-add-modal
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private dialog: MatDialog) {}
+  constructor(private router: Router) {}
 
-  openCrewAddDialog() {
-    const dialogRef = this.dialog.open(CrewAddDialogComponent, {
-      width: '10000px',
-    });
+  navigateToHome() {
+    this.router.navigate(['/']);
   }
 }
