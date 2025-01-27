@@ -15,7 +15,8 @@
     "CARD": "Card",
     "TOTAL_INCOME_BY_CURRENCY": "Total Income By Currency",
     "ADD_CREW": "Add Crew",
-    "ROW_NUMBER": "Row Number"
+    "ROW_NUMBER": "Row Number",
+    "EDIT_CREW": "Edit Crew"
   },
   "CERTIFICATE": {
     "CERTIFICATE_TYPE": "Certificate Type",

@@ -14,7 +14,8 @@
     "ACTIONS": "Actes",
     "CARD": "Carte",
     "TOTAL_INCOME_BY_CURRENCY": "Revenu Total Par Devise",
-    "ADD_CREW": "Ajouter un équipage"
+    "ADD_CREW": "Ajouter un équipage",
+    "EDIT_CREW": "Modifier l'équipe"
   },
   "CERTIFICATE": {
     "CERTIFICATE_TYPE": "Type De Certificat",

@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
-import axios from 'axios';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { crewData } from '../../../../../public/assets/data/crewData';
+import { certificateData } from '../../../../../public/assets/data/certificateData';
+import { certificateTypeData } from '../../../../../public/assets/data/certificateTypeData';
 
 export interface Crew {
   id: string;
@@ -32,46 +33,83 @@ export interface CertificateType {
   providedIn: 'root',
 })
 export class CrewService {
-  private crewUrl = 'assets/data/crews.json';
-  private certificateUrl = 'assets/data/certificates.json';
-  private certificateTypeUrl = 'assets/data/certificateType.json';
+  private crewList: any[] = [...crewData];
+  private certificateData: any[] = [...certificateData];
+  private certificateTypeData: any[] = [...certificateTypeData];
+  private crewSubject = new BehaviorSubject<Crew[]>(this.crewList); // Tablonun anlık güncellenmesi için.
 
-  constructor(private http: HttpClient) {}
+  constructor() {
+    this.loadFromLocalStorage();
+  }
 
+  private saveToLocalStorage() {
+    localStorage.setItem('crewList', JSON.stringify(this.crewList));
+  }
+
+  private loadFromLocalStorage() {
+    const savedData = localStorage.getItem('crewList');
+    if (savedData) {
+      this.crewList = JSON.parse(savedData);
+      this.crewSubject.next(this.crewList);
+    }
+  }
+
+  // Crew CRUD
   getCrewList(): Observable<Crew[]> {
-    return this.http.get<Crew[]>(this.crewUrl);
+    return this.crewSubject.asObservable();
   }
 
   getCrewById(id: string): Observable<Crew | null> {
-    return this.http
-      .get<Crew[]>(this.crewUrl)
-      .pipe(map((crews) => crews.find((crew) => crew.id === id) || null));
+    const crew = this.crewList.find((member) => member.id === id) || null;
+    return of(crew);
   }
 
-  getCertificates(): Observable<Certificate[]> {
-    return this.http.get<Certificate[]>(this.certificateUrl);
+  addCrew(crew: any) {
+    crew.id = (this.crewList.length + 1).toString();
+    this.crewList.push(crew);
+    this.crewSubject.next(this.crewList);
+    this.saveToLocalStorage();
   }
 
-  getCertificateTypes(): Observable<CertificateType[]> {
-    return this.http.get<CertificateType[]>(this.certificateTypeUrl);
+  updateCrew(id: string, updatedCrew: any): Observable<any> {
+    const index = this.crewList.findIndex((crew) => crew.id === id);
+    if (index !== -1) {
+      this.crewList[index] = { ...this.crewList[index], ...updatedCrew };
+      this.crewSubject.next(this.crewList);
+      this.saveToLocalStorage();
+
+      return of(updatedCrew);
+    }
+    return of(null);
   }
 
-  async saveCrew(crew: Crew): Promise<Crew> {
-    const url = 'http://localhost:4200/assets/data/crews.json';
+  deleteCrew(id: string): Observable<any> {
+    this.crewList = this.crewList.filter((crew) => crew.id !== id);
+    this.crewSubject.next(this.crewList);
+    this.saveToLocalStorage();
 
-    return await axios
-      .post(url, JSON.stringify(crew))
-      .then((response) => {
-        console.log('Data saved successfully:', response);
-        return response.data as Crew;
-      })
-      .catch((error) => {
-        console.error('Error saving data:', error);
-        throw error;
-      });
+    return of(id);
   }
 
-  saveCertificate(certificate: Certificate): Observable<Certificate> {
-    return this.http.post<Certificate>(this.certificateUrl, certificate);
+  // Certificate CRUD
+  getCertificates(): Observable<any[]> {
+    return of(this.certificateData);
+  }
+
+  addCertificate(certificate: any) {
+    certificate.id = (this.certificateData.length + 1).toString();
+    this.certificateData.push(certificate);
+    this.saveToLocalStorage();
+  }
+
+  // CertificateType CRUD
+  getCertificateTypes(): Observable<any[]> {
+    return of(this.certificateTypeData);
+  }
+
+  addCertificateType(certificateType: any) {
+    certificateType.id = (this.certificateTypeData.length + 1).toString();
+    this.certificateTypeData.push(certificateType);
+    this.saveToLocalStorage();
   }
 }

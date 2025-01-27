@@ -13,7 +13,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { CertificateType, CrewService } from '../../services/crew.service';
+import { CrewService } from '../../services/crew.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-crew-add-dialog',
@@ -30,16 +31,18 @@ import { CertificateType, CrewService } from '../../services/crew.service';
     CommonModule,
     FormsModule,
     TranslateModule,
+    MatSnackBarModule,
   ],
 })
 export class CrewAddDialogComponent {
   crewForm: FormGroup;
-  titles = ['Captain', 'Engineer', 'Cooker', 'Mechanicer'];
+  titles: string[] = ['Captain', 'Engineer', 'Cooker', 'Mechanicer'];
 
   constructor(
     private fb: FormBuilder,
     private crewService: CrewService,
-    private dialogRef: MatDialogRef<CrewAddDialogComponent>
+    private dialogRef: MatDialogRef<CrewAddDialogComponent>,
+    private snackBar: MatSnackBar
   ) {
     this.crewForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -52,23 +55,37 @@ export class CrewAddDialogComponent {
     });
   }
 
-  async saveCrew() {
+  saveCrew() {
     if (this.crewForm.valid) {
       const crewData = {
-        id: (333).toString(),
         ...this.crewForm.value,
         totalIncome:
           this.crewForm.value.dailyRate * this.crewForm.value.daysOnBoard,
       };
 
       try {
-        const response = await this.crewService.saveCrew(crewData);
+        const response = this.crewService.addCrew(crewData);
 
-        console.log('Crew saved:', response);
+        // Success
+        this.snackBar.open('Crew added successfully!', 'Close', {
+          duration: 3000,
+          panelClass: ['success-snackbar'],
+        });
         this.close();
       } catch (error) {
+        // Error
+        this.snackBar.open('Failed to add crew. Please try again.', 'Close', {
+          duration: 3000,
+          panelClass: ['error-snackbar'],
+        });
+
         console.error('Error saving crew:', error);
       }
+    } else {
+      this.snackBar.open('Please fill all required fields.', 'Close', {
+        duration: 3000,
+        panelClass: ['warning-snackbar'],
+      });
     }
   }
 

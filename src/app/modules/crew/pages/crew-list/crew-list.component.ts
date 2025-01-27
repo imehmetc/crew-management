@@ -14,6 +14,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatDialog } from '@angular/material/dialog';
 import { CertificatesModalComponent } from '../../components/certificates-modal/certificates-modal.component';
 import { CrewAddDialogComponent } from '../../components/crew-add-modal/crew-add-modal.component';
+import { CrewEditModalComponent } from '../../components/crew-edit-modal/crew-edit-modal.component';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-crew-list',
@@ -29,6 +31,7 @@ import { CrewAddDialogComponent } from '../../components/crew-add-modal/crew-add
     MatCardModule,
     MatListModule,
     MatDividerModule,
+    MatSnackBarModule,
   ],
   templateUrl: './crew-list.component.html',
   styleUrl: './crew-list.component.scss',
@@ -55,7 +58,8 @@ export class CrewListComponent {
   constructor(
     private router: Router,
     private crewService: CrewService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -65,6 +69,7 @@ export class CrewListComponent {
       console.log(this.crewService.getCrewList());
     });
   }
+
   calculateTotalIncomeByCurrency() {
     this.totalIncomeByCurrency = {};
     this.dataSource.forEach((crew) => {
@@ -93,12 +98,39 @@ export class CrewListComponent {
     }
   }
 
-  editCrew(crew: any): void {
-    console.log('Editing crew:', crew);
+  deleteCrew(crew: any): void {
+    this.crewService.deleteCrew(crew.id).subscribe(
+      () => {
+        this.snackBar.open('Crew member deleted successfully!', 'Close', {
+          duration: 3000,
+          panelClass: ['success-snackbar'],
+        });
+        this.dataSource = this.dataSource.filter((c) => c.id !== crew.id);
+        this.calculateTotalIncomeByCurrency();
+      },
+      (error) => {
+        this.snackBar.open(
+          'Failed to delete crew member. Please try again.',
+          'Close',
+          {
+            duration: 3000,
+            panelClass: ['error-snackbar'],
+          }
+        );
+        console.error('Error deleting crew:', error);
+      }
+    );
   }
 
-  deleteCrew(crew: any): void {
-    console.log('Deleting crew:', crew);
+  openCrewEditDialog(crew: any): void {
+    const dialogRef = this.dialog.open(CrewEditModalComponent, {
+      width: '400px',
+      data: crew,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('Dialog was closed');
+    });
   }
 
   openCertificatesDialog(crew: any): void {
