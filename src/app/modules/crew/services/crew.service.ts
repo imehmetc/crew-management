@@ -25,7 +25,7 @@ export interface Certificate {
 }
 
 export interface CertificateType {
-  id: string;
+  id?: string;
   type: string;
 }
 
@@ -126,9 +126,13 @@ export class CrewService {
     return of(this.certificateTypeList);
   }
 
-  addCertificateType(certificateType: CertificateType): void {
+  addCertificateType(
+    certificateType: CertificateType
+  ): Observable<CertificateType> {
     certificateType.id = (this.certificateTypeList.length + 1).toString();
     this.certificateTypeList.push(certificateType);
     this.saveToLocalStorage();
+
+    return of(certificateType);
   }
 }

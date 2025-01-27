@@ -15,7 +15,9 @@
     "CARD": "Carte",
     "TOTAL_INCOME_BY_CURRENCY": "Revenu Total Par Devise",
     "ADD_CREW": "Ajouter un équipage",
-    "EDIT_CREW": "Modifier l'équipe"
+    "EDIT_CREW": "Modifier l'équipe",
+    "ADD_CERTIFICATE_TYPE": "Ajouter un type de certificat",
+    "CREW_MANAGEMENT": "Gestion de l'équipage"
   },
   "CERTIFICATE": {
     "CERTIFICATE_TYPE": "Type De Certificat",

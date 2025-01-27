@@ -1,0 +1,25 @@
+<div class="certificate-type-create-container">
+    <mat-card class="certificate-type-card">
+      <mat-card-header>
+        <mat-card-title>{{ 'CERTIFICATE.CERTIFICATE_TYPE' | translate }}</mat-card-title>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <form [formGroup]="certificateTypeForm">
+          <div class="form-field">
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'CERTIFICATE.CERTIFICATE_TYPE' | translate }}</mat-label>
+              <input matInput formControlName="type" required />
+            </mat-form-field>
+          </div>
+  
+          <div class="form-actions">
+            <button mat-raised-button color="primary" type="submit" [disabled]="certificateTypeForm.invalid" (click)="onSubmit()">
+              {{ 'BUTTONS.ADD' | translate }}
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

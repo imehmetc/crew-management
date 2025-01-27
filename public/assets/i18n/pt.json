@@ -15,7 +15,9 @@
     "CARD": "Cartão",
     "TOTAL_INCOME_BY_CURRENCY": "Receita Total Por Moeda",
     "ADD_CREW": "Adicionar tripulação",
-    "EDIT_CREW": "Editar equipe"
+    "EDIT_CREW": "Editar equipe",
+    "ADD_CERTIFICATE_TYPE": "Adicionar tipo de certificado",
+    "CREW_MANAGEMENT": "Gestão de Tripulação"
   },
   "CERTIFICATE": {
     "CERTIFICATE_TYPE": "Tipo De Certificado",

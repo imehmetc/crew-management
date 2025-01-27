@@ -16,7 +16,9 @@
     "TOTAL_INCOME_BY_CURRENCY": "Total Income By Currency",
     "ADD_CREW": "Add Crew",
     "ROW_NUMBER": "Row Number",
-    "EDIT_CREW": "Edit Crew"
+    "EDIT_CREW": "Edit Crew",
+    "ADD_CERTIFICATE_TYPE": "Add Certificate Type",
+    "CREW_MANAGEMENT": "Crew Management"
   },
   "CERTIFICATE": {
     "CERTIFICATE_TYPE": "Certificate Type",

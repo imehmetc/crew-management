@@ -31,7 +31,7 @@ export class CertificatesModalComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private crewService: CrewService,
-    private dialogRef: MatDialogRef<CertificatesModalComponent> // MatDialogRef enjekte edildi
+    private dialogRef: MatDialogRef<CertificatesModalComponent>
   ) {}
 
   ngOnInit() {
@@ -44,17 +44,13 @@ export class CertificatesModalComponent implements OnInit {
   getCertificatesByCrewId(crewId: string) {
     this.crewService.getCertificates().subscribe(
       (certificates) => {
-        // crewId'ye göre filtreleme
         this.certificates = certificates.filter(
           (certificate) => certificate.crewId === crewId
         );
-        console.log('Certificates:', this.certificates);
 
-        // Sertifika türlerini çekme
         this.crewService.getCertificateTypes().subscribe(
           (types) => {
             this.certificateTypes = types;
-            // Sertifikalarla türleri eşleştirme
             this.certificatesWithType = this.certificates.map((certificate) => {
               const certificateType = types.find(
                 (type) => type.id === certificate.certificateTypeId
@@ -77,7 +73,6 @@ export class CertificatesModalComponent implements OnInit {
     );
   }
 
-  // Dialogu kapatma metodu
   closeDialog() {
     this.dialogRef.close();
   }

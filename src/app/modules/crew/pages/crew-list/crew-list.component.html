@@ -3,6 +3,12 @@
   +{{ 'CREW.ADD_CREW' | translate }}
 </button>
 
+<div class="top-link-container">
+  <a mat-button [routerLink]="'/certificate-type-create'" class="certificate-type-create-link">
+    +{{ 'CREW.ADD_CERTIFICATE_TYPE' | translate }}
+  </a>
+</div>
+
 <div class="crew-container">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   
