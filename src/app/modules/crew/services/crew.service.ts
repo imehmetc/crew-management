@@ -33,9 +33,9 @@ export interface CertificateType {
   providedIn: 'root',
 })
 export class CrewService {
-  private crewList: any[] = [...crewData];
-  private certificateData: any[] = [...certificateData];
-  private certificateTypeData: any[] = [...certificateTypeData];
+  private crewList: Crew[] = [...crewData];
+  private certificateList: Certificate[] = [...certificateData];
+  private certificateTypeList: CertificateType[] = [...certificateTypeData];
   private crewSubject = new BehaviorSubject<Crew[]>(this.crewList); // Tablonun anlık güncellenmesi için.
 
   constructor() {
@@ -44,13 +44,32 @@ export class CrewService {
 
   private saveToLocalStorage() {
     localStorage.setItem('crewList', JSON.stringify(this.crewList));
+    localStorage.setItem(
+      'certificateList',
+      JSON.stringify(this.certificateList)
+    );
+    localStorage.setItem(
+      'certificateTypeList',
+      JSON.stringify(this.certificateTypeList)
+    );
   }
 
   private loadFromLocalStorage() {
-    const savedData = localStorage.getItem('crewList');
-    if (savedData) {
-      this.crewList = JSON.parse(savedData);
+    const savedCrewData = localStorage.getItem('crewList');
+    const savedCertificateData = localStorage.getItem('certificateList');
+    const savedCertificateTypeData = localStorage.getItem(
+      'certificateTypeList'
+    );
+
+    if (savedCrewData) {
+      this.crewList = JSON.parse(savedCrewData);
       this.crewSubject.next(this.crewList);
+    }
+    if (savedCertificateData) {
+      this.certificateList = JSON.parse(savedCertificateData);
+    }
+    if (savedCertificateTypeData) {
+      this.certificateTypeList = JSON.parse(savedCertificateTypeData);
     }
   }
 
@@ -64,20 +83,20 @@ export class CrewService {
     return of(crew);
   }
 
-  addCrew(crew: any) {
+  addCrew(crew: Crew): Observable<Crew> {
     crew.id = (this.crewList.length + 1).toString();
     this.crewList.push(crew);
-    this.crewSubject.next(this.crewList);
+    this.crewSubject.next([...this.crewList]);
     this.saveToLocalStorage();
+    return of(crew);
   }
 
   updateCrew(id: string, updatedCrew: any): Observable<any> {
     const index = this.crewList.findIndex((crew) => crew.id === id);
     if (index !== -1) {
       this.crewList[index] = { ...this.crewList[index], ...updatedCrew };
-      this.crewSubject.next(this.crewList);
+      this.crewSubject.next([...this.crewList]);
       this.saveToLocalStorage();
-
       return of(updatedCrew);
     }
     return of(null);
@@ -85,31 +104,31 @@ export class CrewService {
 
   deleteCrew(id: string): Observable<any> {
     this.crewList = this.crewList.filter((crew) => crew.id !== id);
-    this.crewSubject.next(this.crewList);
+    this.crewSubject.next([...this.crewList]);
     this.saveToLocalStorage();
-
     return of(id);
   }
 
   // Certificate CRUD
-  getCertificates(): Observable<any[]> {
-    return of(this.certificateData);
+  getCertificates(): Observable<Certificate[]> {
+    return of(this.certificateList);
   }
 
-  addCertificate(certificate: any) {
-    certificate.id = (this.certificateData.length + 1).toString();
-    this.certificateData.push(certificate);
+  addCertificate(certificate: Certificate): Observable<any> {
+    certificate.id = (this.certificateList.length + 1).toString();
+    this.certificateList.push(certificate);
     this.saveToLocalStorage();
+    return of(certificate);
   }
 
   // CertificateType CRUD
-  getCertificateTypes(): Observable<any[]> {
-    return of(this.certificateTypeData);
+  getCertificateTypes(): Observable<CertificateType[]> {
+    return of(this.certificateTypeList);
   }
 
-  addCertificateType(certificateType: any) {
-    certificateType.id = (this.certificateTypeData.length + 1).toString();
-    this.certificateTypeData.push(certificateType);
+  addCertificateType(certificateType: CertificateType): void {
+    certificateType.id = (this.certificateTypeList.length + 1).toString();
+    this.certificateTypeList.push(certificateType);
     this.saveToLocalStorage();
   }
 }

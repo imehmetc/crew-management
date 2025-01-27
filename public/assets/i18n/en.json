@@ -23,7 +23,8 @@
     "ISSUE_DATE": "Issue Date",
     "EXPIRY_DATE": "Expiry Date",
     "CERTIFICATE_DETAILS": "Certificate Details",
-    "NO_CERTIFICATES": "No Certificates"
+    "NO_CERTIFICATES": "No Certificates",
+    "ADD_CERTIFICATE": "Add Certificate"
   },
   "BUTTONS": {
     "ADD": "Add",

@@ -1,6 +1,7 @@
 <h2 mat-dialog-title>{{ "CREW.ADD_CREW" | translate }}</h2>
 <mat-dialog-content>
   <form [formGroup]="crewForm">
+    <!-- Add Crew -->
     <mat-form-field appearance="fill">
       <mat-label>{{ "CREW.FIRST_NAME" | translate }}</mat-label>
       <input matInput formControlName="firstName" required />
@@ -43,6 +44,44 @@
         <mat-option value="MXN">MXN</mat-option>
       </mat-select>
     </mat-form-field>
+
+    <!-- Add Certificate to Crew -->
+    <div *ngIf="certificatesVisible">
+      <h3>{{ "CERTIFICATE.ADD_CERTIFICATE" | translate }}</h3>
+      
+      <div formArrayName="certificates">
+        <div *ngFor="let certificate of certificatesFormArray.controls; let i = index" [formGroupName]="i">
+         
+          <mat-form-field appearance="fill">
+            <mat-label>{{ "CERTIFICATE.CERTIFICATE_TYPE" | translate }}</mat-label>
+            <mat-select formControlName="certificateTypeId">
+              <mat-option *ngFor="let type of certificateTypes" [value]="type.id">{{ type.type }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+           
+          <!-- Issue Date Field -->
+          <mat-form-field appearance="fill">
+            <mat-label>{{ "CERTIFICATE.ISSUE_DATE" | translate }}</mat-label>
+            <input matInput formControlName="issueDate" [matDatepicker]="issueDatePicker" />
+            <mat-datepicker-toggle matSuffix [for]="issueDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #issueDatePicker></mat-datepicker>
+          </mat-form-field>
+
+          <!-- Expiry Date Field -->
+          <mat-form-field appearance="fill">
+            <mat-label>{{ "CERTIFICATE.EXPIRY_DATE" | translate }}</mat-label>
+            <input matInput formControlName="expiryDate" [matDatepicker]="expiryDatePicker" />
+            <mat-datepicker-toggle matSuffix [for]="expiryDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #expiryDatePicker></mat-datepicker>
+          </mat-form-field>      
+        
+        </div>
+      </div>
+    </div>
+
+    <button mat-raised-button type="button" (click)="toggleCertificates()">
+      {{ "CERTIFICATE.ADD_CERTIFICATE" | translate }}
+    </button>
   </form>
 </mat-dialog-content>
 

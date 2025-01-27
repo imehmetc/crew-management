@@ -22,7 +22,8 @@
     "ISSUE_DATE": "Date D'émission",
     "EXPIRY_DATE": "Date D'expiration",
     "CERTIFICATE_DETAILS": "Détails Du Certificat",
-    "NO_CERTIFICATES": "Pas De Certificats"
+    "NO_CERTIFICATES": "Pas De Certificats",
+    "ADD_CERTIFICATE": "Ajouter un certificat"
   },
   "BUTTONS": {
     "ADD": "Ajouter",
